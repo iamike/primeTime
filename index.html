@@ -21,7 +21,6 @@
 
      <img src="images/ting.png" class="music_btn" />
      <img src="images/loading.gif" class="loading" />
-     <img src="images/share.png" class="share_tips" />
      <div class="progress">0%</div>
     
     <div class="wrapper">
@@ -67,24 +66,95 @@
         </div>
         <div class="lastPage">
         </div>
+
+    </div>
         <div class="modalBox">
               <div class="inner">
-                <img class="closeModal" src="images/x.png"/>
-                <h1>活动规则</h1>
-                        <p>即日起至-3月31日前，上传你心目中最佳腕表照片，并用一句话描述此表，留下你的联系方式。盛时表行将从中挑选出10张照片，再通过此平台由用户投票，最终投票前三名用户将获得独家神秘礼品一份！</p>
-                        <p>点击此上传照片</p>
-                        <a href="">公众号连接</a>
+                 <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://api.mangoeasy.com/api/Upload">
+                    <img class="closeModal" src="images/x.png"/>
+                        <h1>活动规则</h1>
+                        <p>即日起至-3月31日前，上传你心目中最佳腕表照片，并用一句话描述此表，留下你的联系方式。盛时表行将从中挑选出10张照片，再通过此平台由用户投票，最终投票前三名用户将获得独家神秘礼品一份！</p>                        
+                        <div id="form-main">
+                          <div id="form-div">
+                              
+                              <p class="name">
+                                <input name="PersonName" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="阁下姓名" id="PersonName" />
+                              </p>
+                              
+                              <p class="phone">
+                                <input name="PersonPhoneNum" type="text" class="validate[required,custom[PersonPhoneNum]] feedback-input" id="PersonPhoneNum" placeholder="手机号码" />
+                              </p>
+                              
+                              <p class="text">
+                                <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="Comments"  name="Comments" placeholder="一句话描述您当时得到的心情"></textarea>
+                              </p>
+                               
+                               <p><input type="file" id="file" name="file" /></p>
+
+                              
+                              <div class="submit">
+                                <input type="submit" value="提交" id="button-blue"/>
+                                <div class="ease"></div>
+                              </div>
+
+
+
+                          </div>
+
+                        <!--
+                        <p><input type="file" id="file" name="file" /></p>
+                        <p><input id="=Comments" name="Comments" type="text" /></p>
+                        <p><input id="=PersonName" name="PersonName" type="text" /></p>
+                        <p><input id="=PersonPhoneNum" name="PersonPhoneNum" type="text" /></p>
+                        <p><input type="submit" class="btn btn-primary" id="submit" value="提交" /></p>-->
+                    </form>
              </div>
                     
          </div>
-    </div>
-
 
   
  <!-- weixin sdk js 文件 -->
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script src="http://v2.shheywow.com/assets/jssdk/weixin.js"></script>
-<!--合沃JSSDK-->
+<!---->
+<script type="text/javascript">
+
+var wxConfigParams={};
+var wxServiceUrl = "http://mangoeasy.weixin.smc-sfe.com/api/Service";
+var wxServiceData = { url: location.href,id: "5236c120-546b-eed3-61d0-58a9c0785767"};
+var wxShareData = {
+          title:'2015年第25届日内瓦国际钟表展',
+          imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
+          link:'http://wechat.mangoeasy.com/primeTime/index.html',
+          desc:'钟表展来啦！',
+          success: function () {
+           alert(' 用户确认分享后执行的回调函数');
+          },
+          cancel: function () {
+           alert(' 用户取消分享后执行的回调函数');
+          }
+    };
+
+$.get(wxServiceUrl,wxServiceData, function (data) {
+
+
+        wxConfigParams.appId = data.AppId;
+        wxConfigParams.timestamp = data.Timestamp;
+        wxConfigParams.nonceStr = data.NonceStr;
+        wxConfigParams.signature = data.Signature;
+        wxConfigParams.jsApiList = ['onMenuShareTimeline','onMenuShareAppMessage'];
+
+        
+        wx.config(wxConfigParams);
+        
+        wx.ready(function(){
+            wx.onMenuShareTimeline(wxShareData);
+            wx.onMenuShareAppMessage(wxShareData);
+        })
+
+  })
+</script>
+<!--<script src="http://v2.shheywow.com/assets/jssdk/weixin.js"></script>
+合沃JSSDK
 <script type="text/javascript">
     // 微信公众号的appid
     var appid = 'wx4855a807c793c274';
@@ -98,8 +168,8 @@
     // 分享朋友圈的数据
     HW.shareTimelineData = {
          title:"2015年第25届日内瓦国际钟表展",
-         link:'http://mike.smc-sfe.com/primeTime/',
-         imgUrl:'http://mike.smc-sfe.com/primeTime/images/icon.png',
+         link:'http://wechat.mangoeasy.com/primeTime/',
+         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
          success:function() {
          }
     };
@@ -108,8 +178,8 @@
     HW.shareAppData = {
          title:"2015年第25届日内瓦国际钟表展",
          desc:"钟表界奥斯卡",
-         link:'http://mike.smc-sfe.com/primeTime/',
-         imgUrl:'http://mike.smc-sfe.com/primeTime/images/icon.png',
+         link:'http://wechat.mangoeasy.com/primeTime/',
+         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
          success:function() {
          }
     }
@@ -124,7 +194,7 @@
     HW.wxconfig(appid, window.location.href, false);
 
 
-</script>
+</script>-->
 <!-- heywow js sdk 文件 <script src="js/wxsettings.js"></script>  -->
 </body>
 
