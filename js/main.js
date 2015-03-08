@@ -213,7 +213,7 @@ $(document).ready(function(e) {
         listBrand();
 
    });
-
+   /*
    $(".campaign").on('click touchstart',function(){
 
         $('.modalBox').modalBox({
@@ -227,7 +227,7 @@ $(document).ready(function(e) {
 
    $('.closeModal').on('click touchstart',function(){
         $('.modalBox').modalBox('close');
-   });
+   });*/
    $(window).on('hashchange', function() {
       //.. work ..
       if(location.hash==""){
