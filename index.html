@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
 <title>2015日内瓦国际钟表展</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <script src="http://code.createjs.com/easeljs-0.7.1.min.js"></script>
 <script src="http://code.createjs.com/tweenjs-0.5.1.min.js"></script>
@@ -25,9 +25,7 @@
      <img src="images/loading.gif" class="loading" />
      <div class="progress">0%</div>
             <span class="campaign">
-                <span class="link" data-toggle="modal" data-target="#myModal">参与活动赢取大奖</span>
-                <!-- Large modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">立即参加</button>
+                <a class="link " data-toggle="modal" data-target=".bs-example-modal-lg">参与活动赢取大奖</a>
                 </span>    
     <div class="wrapper">
         <div class="p1">
@@ -77,11 +75,18 @@
         <div class="modal-content">
             <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://api.mangoeasy.com/api/Upload">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">活动规则</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center">活动规则</h4>
           </div>
           <div class="modal-body">
-            <p>即日起至-3月31日前，上传你心目中最佳腕表照片，并用一句话描述此表，留下你的联系方式。盛时表行将从中挑选出10张照片，再通过此平台由用户投票，最终投票前三名用户将获得独家神秘礼品一份！</p>
+            <p>3月13日 -- 3月31日间，上传属于你心目中“钟表界的奥斯卡”手表照片至盛时表行服务号（primetime-service）或此页面下方条目处，盛时将:</p>
+            <ol>
+                <li>筛选出10张符合活动要求的图片，在公众平台发布；</li>
+                <li>由用户对筛选出的照片进行投票；</li>
+                <li>最终评选出4位优胜者获得精美神秘奖品一份</li>
+            </ol>
+            <p>上传要求：上传手表品牌必须是历峰集团旗下，包含：江诗丹顿、积家、沛纳海、伯爵、朗格、万国、罗杰杜彼、名仕、卡地亚、万宝龙 （图片要求：必需清楚展示手表品牌，背景与场景不限，图片清晰）</p>
+            <p>上传内容： 手表照片+姓名+联系方式+上传手表品牌+系列+此支手表与你的故事（温馨提示：若能描述其功能与机芯等，被挑选出的几率会更高哦！）</p>
 
                <div class="form-group">
                 <label for="message-text" class="control-label">您的姓名:</label>
@@ -101,7 +106,6 @@
               </div> 
         </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <input type="submit" class="btn btn-primary" id="submit" value="提交" />
           </div>
             </form>
