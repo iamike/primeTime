@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
 <title>2015日内瓦国际钟表展</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!----><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
@@ -13,13 +13,12 @@
 <script src="http://code.createjs.com/movieclip-0.7.1.min.js"></script>
 <script src="http://code.createjs.com/preloadjs-0.4.1.min.js"></script>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!----><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
 </head>
 
-<body onload="loadLib(0);"  style="background-color:#000000">
-    <!--<body  style="background-color:#000000">-->
+<body onload="loadLib(0);" style="background-color:#000000">
 
      <img src="images/ting.png" class="music_btn" />
      <img src="images/loading.gif" class="loading" />
@@ -30,6 +29,8 @@
     <div class="wrapper">
         <div class="p1">
            <img src="images/skip.png" class="skip" />
+           <img src="images/arrow.png" class="prev" />
+           <img src="images/arrow.png" class="next" />
             <canvas id="canvas" width="640" height="1136" style="background-color:#000;"></canvas>
         </div>
         <div class="p2">
@@ -117,87 +118,7 @@
   
  <!-- weixin sdk js 文件 -->
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<!---->
-<script type="text/javascript">
-
-var wxConfigParams={};
-var wxServiceUrl = "http://mangoeasy.weixin.smc-sfe.com/api/Service";
-var wxServiceData = { url: location.href,id: "5236c120-546b-eed3-61d0-58a9c0785767"};
-var wxShareData = {
-          title:'2015年第25届日内瓦国际钟表展',
-          imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
-          link:'http://wechat.mangoeasy.com/primeTime/index.html',
-          desc:'钟表展来啦！',
-          success: function () {
-           alert(' 用户确认分享后执行的回调函数');
-          },
-          cancel: function () {
-           alert(' 用户取消分享后执行的回调函数');
-          }
-    };
-
-$.get(wxServiceUrl,wxServiceData, function (data) {
-
-
-        wxConfigParams.appId = data.AppId;
-        wxConfigParams.timestamp = data.Timestamp;
-        wxConfigParams.nonceStr = data.NonceStr;
-        wxConfigParams.signature = data.Signature;
-        wxConfigParams.jsApiList = ['onMenuShareTimeline','onMenuShareAppMessage'];
-
-        
-        wx.config(wxConfigParams);
-        
-        wx.ready(function(){
-            wx.onMenuShareTimeline(wxShareData);
-            wx.onMenuShareAppMessage(wxShareData);
-        })
-
-  })
-</script>
-<!--<script src="http://v2.shheywow.com/assets/jssdk/weixin.js"></script>
-合沃JSSDK
-<script type="text/javascript">
-    // 微信公众号的appid
-    var appid = 'wx4855a807c793c274';
-
-    // HW 是heywow js sdk的命名空间
-
-    // 要使用的jsapi列表
-    HW.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage'];
-
-
-    // 分享朋友圈的数据
-    HW.shareTimelineData = {
-         title:"2015年第25届日内瓦国际钟表展",
-         link:'http://wechat.mangoeasy.com/primeTime/',
-         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
-         success:function() {
-         }
-    };
-
-    // 分享给好友的数据
-    HW.shareAppData = {
-         title:"2015年第25届日内瓦国际钟表展",
-         desc:"钟表界奥斯卡",
-         link:'http://wechat.mangoeasy.com/primeTime/',
-         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
-         success:function() {
-         }
-    }
-
-    // 隐藏菜单列表
-    HW.hideMenuList = [];
-
-    // 调用HW.wxconfig初始化微信jssdk
-    // 第一个参数：微信公众号appid
-    // 第二个参数：当前页面的完整URL(需要urlencode)
-    // 第三个参数：是否需要开启debug模式
-    HW.wxconfig(appid, window.location.href, false);
-
-
-</script>-->
-<!-- heywow js sdk 文件 <script src="js/wxsettings.js"></script>  -->
+<!--<script src="http://jsconsole.com/remote.js?940926CF-1262-4994-984B-82282A8492BA"></script>-->
 </body>
 
 </html>

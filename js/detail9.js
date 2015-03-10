@@ -1117,7 +1117,29 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		}
 		
+		
+		var playPrevMC = function(){
+				playIndex--;
+			if (playIndex<0){
+					playIndex = 0;
+		
+				}
+					detail();
+		
+			}
+		
 		detail();
+			
+		$('.next').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playNextMC();
+		});
+		$('.prev').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playPrevMC();
+		});
 	}
 	this.frame_90 = function() {
 		this.stop();

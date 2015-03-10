@@ -1147,10 +1147,10 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 		
 			//when instance play at the end, run the callback
 			playInstance.on("closed", playNextMC);
+			
 		
 			//put instance into the canvas
 			root.addChild(playInstance);
-		
 		
 			//canvas run the open animation
 			playInstance.gotoAndPlay("opened");
@@ -1185,8 +1185,6 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 		
 			//index add 1
 			if (playIndex < playList.length) {
-		
-		
 				//again
 				detail();
 			}  
@@ -1194,10 +1192,29 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 				listBrandE();
 			}
 		
-		
 		}
+		var playPrevMC = function(){
+				playIndex--;
+			if (playIndex<0){
+					playIndex = 0;
+		
+				}
+					detail();
+		
+			}
 		
 		detail();
+			
+		$('.next').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playNextMC();
+		});
+		$('.prev').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playPrevMC();
+		});
 	}
 
 	// actions tween:

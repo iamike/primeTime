@@ -1989,7 +1989,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		}
 		
-		var detail = function () {
+		var detail = function (jump) {
 		
 			if (playBGcolor[playIndex] == "init") {
 				root.stop();
@@ -1998,19 +1998,33 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 			//if need play on white background
 			if (playBGcolor[playIndex] == "onWhite") {
-				root.gotoAndPlay("onWhite");
-				root.on("onWhite", playClip);
+				if (jump==true){
+					console.log('yes')
+						root.gotoAndStop("openedOnWhite");
+						playClip();
+		
+					} else {
+						root.gotoAndPlay("onWhite");
+						root.on("onWhite", playClip);
+					}
+				
 			}
 		
 			//if need play on black background
 			if (playBGcolor[playIndex] == "onBlack") {
-				root.gotoAndPlay("onBlack");
-				root.on("onBlack", playClip);
+				if (jump==true){
+						root.gotoAndStop("openedOnBlack");
+						playClip();
+		
+					} else {
+						root.gotoAndPlay("onBlack");
+						root.on("onBlack", playClip);
+					}
 			}
 		
 		}
 		
-		var playNextMC = function () {
+		var playNextMC = function (jump) {
 				playIndex++;
 		
 			//index add 1
@@ -2018,7 +2032,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		
 				//again
-				detail();
+				detail(jump);
 			}  
 			else if (playIndex >= playList.length) {
 				listBrandE();
@@ -2027,7 +2041,29 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		}
 		
+		
+		var playPrevMC = function(jump){
+				playIndex--;
+			if (playIndex<0){
+					playIndex = 0;
+		
+				}
+					detail(jump);
+		
+			}
+		
 		detail();
+			
+		$('.next').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playNextMC(true);
+		});
+		$('.prev').on('click touchstart',function(){
+			//clean the previous instance on root
+			root.removeChild(playInstance);
+			playPrevMC(true);
+		});
 	}
 	this.frame_90 = function() {
 		this.stop();

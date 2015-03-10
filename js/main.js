@@ -20,7 +20,6 @@ var isMobile = {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows() || isMobile.Windows2());
     }
 };
-
 var playEnd = false;
 var pageIndex = 1;
 var pageHeight;
@@ -96,6 +95,7 @@ function handleProgress(event) {
     var loaded = Math.floor(event.loaded * 100);
     $(".progress").html(loaded);
     //console.log(loaded);
+
 }
 
 function listBrandE(){
@@ -126,7 +126,8 @@ function listBrand() {
     $(".box").css({"-webkit-transform":"scale("+sl+","+sl+")","-webkit-transform-origin":"center top"});
     
     location.hash="";
-
+    $('.next').unbind("click touchstart");
+    $('.prev').unbind("click touchstart");
 }
 function hideBrand() {
     $("body").removeClass("listBrand");
@@ -213,20 +214,16 @@ $(document).ready(function(e) {
         listBrand();
 
    });
-   /*
-   $(".campaign").on('click touchstart',function(){
 
-        $('.modalBox').modalBox({
-            'width':'100%',
-            'height':'100%',
-            'top':'0px',
-            'left':'0px'
-        });
+   /*
+   $(".next").on('click touchstart',function(){
+        console.log(exportRoot);
+
 
    });
+   $(".prev").on('click touchstart',function(){
 
-   $('.closeModal').on('click touchstart',function(){
-        $('.modalBox').modalBox('close');
+    
    });*/
    $(window).on('hashchange', function() {
       //.. work ..
