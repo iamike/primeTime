@@ -236,7 +236,6 @@ $(document).ready(function(e) {
 
     });
 
-   $()
 
 
 })
