@@ -89,6 +89,13 @@ function handleComplete() {
     $(".progress").fadeOut();
     myAudio.play();
 
+    if (curName=="start"){
+        $("body").addClass("start");
+    } else {
+        $("body").removeClass("start");
+
+    }
+
 }
 
 function handleProgress(event) {
@@ -110,6 +117,8 @@ function listBrand() {
     $(".p2").hide();
     $(".box").show();
     $("body").addClass("listBrand");
+    $("body").removeClass("start");
+
     setTimeout(function(){
         $(".a2,.a4,.a6,.a8").addClass("num");
     },700);
