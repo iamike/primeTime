@@ -128,6 +128,8 @@ function listBrand() {
     location.hash="";
     $('.next').unbind("click touchstart");
     $('.prev').unbind("click touchstart");
+
+    exportRoot={};
 }
 function hideBrand() {
     $("body").removeClass("listBrand");
