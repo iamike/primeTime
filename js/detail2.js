@@ -27,8 +27,8 @@ lib.properties = {
 		{src:"images/detail2/Harmony21.png", id:"Harmony21"},
 		{src:"images/detail2/Harmony3200.jpg", id:"Harmony3200"},
 		{src:"images/detail2/metiers1.png", id:"metiers1"},
-		{src:"images/detail2/metiers2.png", id:"metiers2"},
-		{src:"images/detail2/metiers3.png", id:"metiers3"},
+		{src:"images/detail2/metiers2.jpg", id:"metiers2"},
+		{src:"images/detail2/metiers3.jpg", id:"metiers3"},
 		{src:"images/detail2/new12111.png", id:"new12111"},
 		{src:"images/detail2/new1221.png", id:"new1221"}
 	]
@@ -1552,7 +1552,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		debug = true;
 		this.stop();
 		
-		var playBGcolor = ["init", "init", "onWhite","init","init","init","onBlack","init","init"];
+		var playBGcolor = ["b", "b", "onWhite","w","w","w","onBlack","b","b"];
 		var playList = ["opening", "harmony1", "harmony2","harmony3","harmony4","clock1","metiers1","metiers2","metiers3"];
 		//var playList = ["metiers2"];
 		var playIndex = 0;
@@ -1585,11 +1585,19 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 				//root.stop();
 				playClip();
 			}
-		
+			if (playBGcolor[playIndex] == "b") {
+				//root.stop();
+				root.gotoAndStop("openedOnBlack");
+				playClip();
+			}
+			if (playBGcolor[playIndex] == "w") {
+				//root.stop();
+				root.gotoAndStop("openedOnWhite");
+				playClip();
+			}
 			//if need play on white background
 			if (playBGcolor[playIndex] == "onWhite") {
 				if (jump==true){
-					console.log('yes')
 						root.gotoAndStop("openedOnWhite");
 						playClip();
 		

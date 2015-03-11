@@ -1168,7 +1168,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 			console.log(libAll);
 		}
 		
-		var playBGcolor = ["init", "onWhite", "init", "init","init","init","init"];
+		var playBGcolor = ["b", "onWhite", "w", "w","w","w","w"];
 		var playList = ["opening", "traditional1", "traditional2", "blackTie","altplano","altplano2","altplano3"];
 		var playIndex = 0;
 		var playInstance;
@@ -1194,28 +1194,50 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		}
 		
-		var detail = function () {
+		var detail = function (jump) {
 		
 			if (playBGcolor[playIndex] == "init") {
-				root.stop();
+				//root.stop();
 				playClip();
 			}
-		
+			if (playBGcolor[playIndex] == "b") {
+				//root.stop();
+				root.gotoAndStop("openedOnBlack");
+				playClip();
+			}
+			if (playBGcolor[playIndex] == "w") {
+				//root.stop();
+				root.gotoAndStop("openedOnWhite");
+				playClip();
+			}
 			//if need play on white background
 			if (playBGcolor[playIndex] == "onWhite") {
-				root.gotoAndPlay("onWhite");
-				root.on("onWhite", playClip);
+				if (jump==true){
+						root.gotoAndStop("openedOnWhite");
+						playClip();
+		
+					} else {
+						root.gotoAndPlay("onWhite");
+						root.on("onWhite", playClip);
+					}
+				
 			}
 		
 			//if need play on black background
 			if (playBGcolor[playIndex] == "onBlack") {
-				root.gotoAndPlay("onBlack");
-				root.on("onBlack", playClip);
+				if (jump==true){
+						root.gotoAndStop("openedOnBlack");
+						playClip();
+		
+					} else {
+						root.gotoAndPlay("onBlack");
+						root.on("onBlack", playClip);
+					}
 			}
 		
 		}
 		
-		var playNextMC = function () {
+		var playNextMC = function (jump) {
 				playIndex++;
 		
 			//index add 1
@@ -1223,7 +1245,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		
 		
 				//again
-				detail();
+				detail(jump);
 			}  
 			else if (playIndex >= playList.length) {
 				listBrandE();
@@ -1233,13 +1255,13 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		}
 		
 		
-		var playPrevMC = function(){
+		var playPrevMC = function(jump){
 				playIndex--;
 			if (playIndex<0){
 					playIndex = 0;
 		
 				}
-					detail();
+					detail(jump);
 		
 			}
 		
@@ -1248,12 +1270,12 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{onW
 		$('.next').on('click touchstart',function(){
 			//clean the previous instance on root
 			root.removeChild(playInstance);
-			playNextMC();
+			playNextMC(true);
 		});
 		$('.prev').on('click touchstart',function(){
 			//clean the previous instance on root
 			root.removeChild(playInstance);
-			playPrevMC();
+			playPrevMC(true);
 		});
 	}
 	this.frame_90 = function() {
