@@ -26,8 +26,20 @@ left: 0px;
 -ms-transform: rotate(180deg) ;}
     .progress{ background-color: transparent; position:absolute; left:50%; top:50%; margin-left:-25px; margin-top:-15px; font-size:1.5em; z-index:888; color:#999; width:50px; height:30px; text-align:center;}
     .arrow{width:50px; height:59px; position:absolute; left:50%; top:0; margin-left:-20px;}
+    .form-group input {
 
+        font-size: 24px;
+        width:100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
 
+    }
+    .form-group input[type=file]{
+        height: 40px;
+    }
     /* list watch */
     .box{ background: url(../images/fm.jpg) no-repeat; width:630px; height:1136px;padding:0 0 0 10px;}
     .box>div{ width:206px; height:356px; float:left; position:relative;
@@ -58,12 +70,14 @@ left: 0px;
     .close{
         opacity: 1;
     }
-    .btn-primary {
+    .btn-primary,.btn-primary:focus,.btn-primary:hover {
         border: none;
         background-color: #000;
         color: #fff;
         font-size: 24px;
+        border-color: #000;
     }
+
     .modal-content {
         background-color: rgba(0, 0, 0, 0.6);
     }
