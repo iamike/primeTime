@@ -32,6 +32,7 @@ left: 0px;
     .form-group input {
 
         font-size: 24px;
+		line-height:28px;
         width:100%;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -40,7 +41,8 @@ left: 0px;
         border-radius: 5px;
 
     }
-
+.modal-body-success{
+display:none;}
     /* list watch */
     .box{ background: url(../images/fm.jpg) no-repeat; width:630px; height:1136px;padding:0 0 0 10px;}
     .box>div{ width:206px; height:356px; float:left; position:relative;

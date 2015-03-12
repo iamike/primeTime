@@ -74,7 +74,7 @@
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://api.mangoeasy.com/api/Upload" target='frameFile'>
+            <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://api.mangoeasy.com/api/Upload?cb=http://wechat.mangoeasy.com/primeTime/deal_cd.html" target='frameFile'>
 			
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span></button>
@@ -100,12 +100,16 @@
               </div>
               <div class="form-group">
                 <label for="Comments" class="control-label">一句话描述您当时的心情:</label>
-                <textarea  id="Comments" name="Comments" type="text" class="form-control" rows="3"></textarea>
+                <textarea style="line-height:18px;font-size:24px;"  id="Comments" name="Comments" type="text" class="form-control" rows="3"></textarea>
               </div>
               <div class="form-group">
                 <label for="file" class="control-label">照片:</label>
-                <input type="file" id="file" name="file" class="form-control" />
+                <input style="line-height:18px;padding-top:5px;" type="file" id="file" name="file" class="form-control" />
               </div> 
+        </div>
+		 <div class="modal-body-success">
+            <p>发送成功! 我们会与您取得联系的,感谢您的参与!</p>
+            <input type="button" class="btn btn-primary" id="return" value="返回" />
         </div>
           <div class="modal-footer">
             <input type="submit" class="btn btn-primary" id="submit" value="提交" />
@@ -121,7 +125,25 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <!---->
 <script type="text/javascript">
-document.domain='mangoeasy.com';
+
+$("input#return").on('click',function(){
+	$(".bs-example-modal-lg").modal("hide");
+})
+
+ var dataString;
+function getIframeVal(val){  
+  //alert(val.Url);  
+   dataString = decodeURIComponent(val);
+  if(dataString.search("Success:'True'")){
+	$(".modal-body").hide();
+	$(".modal-footer").hide();
+	$(".modal-body-success").show();
+  } else {
+  	alert('发送失败,请重试.')
+
+  }
+ }  
+
 var wxConfigParams={};
 var wxServiceUrl = "http://mangoeasy.weixin.smc-sfe.com/api/Service";
 var wxServiceData = { url: location.href,id: "5236c120-546b-eed3-61d0-58a9c0785767"};
@@ -155,60 +177,9 @@ $.get(wxServiceUrl,wxServiceData, function (data) {
             wx.onMenuShareAppMessage(wxShareData);
         })
 
-  })    
-$(function(){
-$('#submit').click(function(){
-  $('#uploadForm').submit();  
-});
-function showResult(data){
-alert(data.Url)
-}
-})
-  
+  }) 
 </script>
-<!--<script src="http://v2.shheywow.com/assets/jssdk/weixin.js"></script>
-合沃JSSDK
-<script type="text/javascript">
-    // 微信公众号的appid
-    var appid = 'wx4855a807c793c274';
 
-    // HW 是heywow js sdk的命名空间
-
-    // 要使用的jsapi列表
-    HW.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage'];
-
-
-    // 分享朋友圈的数据
-    HW.shareTimelineData = {
-         title:"2015年第25届日内瓦国际钟表展",
-         link:'http://wechat.mangoeasy.com/primeTime/',
-         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
-         success:function() {
-         }
-    };
-
-    // 分享给好友的数据
-    HW.shareAppData = {
-         title:"2015年第25届日内瓦国际钟表展",
-         desc:"钟表界奥斯卡",
-         link:'http://wechat.mangoeasy.com/primeTime/',
-         imgUrl:'http://wechat.mangoeasy.com/primeTime/images/icon.png',
-         success:function() {
-         }
-    }
-
-    // 隐藏菜单列表
-    HW.hideMenuList = [];
-
-    // 调用HW.wxconfig初始化微信jssdk
-    // 第一个参数：微信公众号appid
-    // 第二个参数：当前页面的完整URL(需要urlencode)
-    // 第三个参数：是否需要开启debug模式
-    HW.wxconfig(appid, window.location.href, false);
-
-
-</script>-->
-<!-- heywow js sdk 文件 <script src="js/wxsettings.js"></script>  -->
 </body>
 
 </html>

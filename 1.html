@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="referrer" content="always">
+    <title>美橙互联_百度搜索</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script>  
+ // 这个函数将来会被iframe用到  
+ function getIframeVal(val)  
+ {  
+  alert(val);  
+ }  
+</script>  
+</head>
+
+<body>
+<iframe id='frameFile' name='frameFile' style=' display:none;'></iframe>
+    <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://api.mangoeasy.com/api/Upload?cb=http://wechat.mangoeasy.com/primeTime/deal_cd.html" target='frameFile'>
+        <input type="file" id="file" name="file" />
+        <input id="=Comments" name="Comments" type="text" />
+        <input id="=PersonName" name="PersonName" type="text" />
+        <input id="=PersonPhoneNum" name="PersonPhoneNum" type="text" />
+        <input type="submit" class="btn btn-primary" id="submit" value="提交" />
+    </form>
+</body>
+</html>
